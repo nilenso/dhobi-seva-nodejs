@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/iamgarima/dhobi-seva-nodejs#readme",
   "dependencies": {
-    "express": "^4.14.1"
+    "express": "^4.14.1",
+    "pg": "^6.1.2"
   }
 }
