@@ -12,10 +12,10 @@ let query = client.query("insert into courses (coursename, startdate, enddate) v
 }
 
 utils.getCourse = () => {
-  let query = client.query("select * from courses")
-  query.on("row", function (row, result) {
-            console.log(row) 
-        })
+  let query = client.query('select * from courses')
+  query.on('row', function (row, result) {
+    console.log(row)
+  })
 }
 
 module.exports = utils
