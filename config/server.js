@@ -7,13 +7,12 @@ const bodyParser = require('body-parser')
 app.use(express.static(path.join(__dirname, '../public')))
 app.use(bodyParser.json())
 
-app.get('/', (req, res) => {
-
+app.get('/getCourse', (req, res) => {
+  utils.getCourse(res)
 })
 
 app.post('/createCourse', (req, res) => {
-  utils.createCourse(req.body.name, req.body.start, req.body.end)
-  res.send(req.body)
+  utils.createCourse(req, res)
 })
 
 const server = app.listen(process.env.PORT || 3000, () => {
@@ -22,4 +21,4 @@ const server = app.listen(process.env.PORT || 3000, () => {
   console.log('Server listening at http://%s:%s', host, port)
 })
 
-utils.getCourse()
+//utils.getCourse()
