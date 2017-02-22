@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+  margin-bottom: 70px
+}
+
+.card-content {
+  text-align: center
+}
+
+.card-content span {
+  text-align: left
+}
+
+.card-content i {
+  font-size: 120px;
+  margin-top: 15px
+}
