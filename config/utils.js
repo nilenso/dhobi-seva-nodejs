@@ -8,13 +8,22 @@ client.connect()
 
 utils.createCourse = (courseName, startDate, endDate) => {
 client.query('CREATE TABLE IF NOT EXISTS courses(courseId serial PRIMARY KEY,coursename varchar(35), startdate varchar(12), enddate varchar(12))')
-let query = client.query("insert into courses (coursename, startdate, enddate) values ('"+courseName+"', '"+startDate+"', '"+endDate+"')")
+  if ((courseName !== null) && (startDate !== null) && (endDate !== null)) {
+     let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+courseName+"', '"+startDate+"', '"+endDate+"')")
+  } else {
+    console.log('Error')
+  }
 }
 
-utils.getCourse = () => {
-  let query = client.query('select * from courses')
+utils.getCourse = (res) => {
+  console.log('inside');
+  let query = client.query('SELECT * FROM courses')
   query.on('row', function (row, result) {
-    console.log(row)
+    result.addRow(row)
+  })
+  query.on('end', function (result) {
+    console.log(result.rows)
+    res.send(result.rows)
   })
 }
 
