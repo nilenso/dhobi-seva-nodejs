@@ -33,13 +33,13 @@ function createCourse () {
      <div class="col s6 m3">
        <div class="card blue-grey darken-1 small">
          <div class="card-content white-text">
-           <span class="card-title" style="font-size: 30px; font-weight: 400">${res.name}</span>
-           <h5 style="margin-top: 50px">${res.start}</h5>
-           <h5>${res.end}</h5>
+           <span class="card-title card-title-style">${res.name}</span>
+           <p class="start-date-style">${res.start}</p>
+           <p class="end-date-style">${res.end}</p>
          </div>
          <div class="card-action">
            <a href="#students">Open</a>
-           <a href="#">Receivables</a>
+           <a href="#">End</a>
          </div>
        </div>
      </div>
@@ -70,13 +70,18 @@ function appendCourse(course) {
     <div class="col s6 m3">
       <div class="card blue-grey darken-1 small">
         <div class="card-content white-text">
-          <span class="card-title" style="font-size: 30px; font-weight: 400">${course.coursename}</span>
-          <h5 style="margin-top: 50px">${course.startdate}</h5>
-          <h5>${course.enddate}</h5>
+          <span class="card-title card-title-style">${course.coursename}</span>
+          <hr>
+          <p class="start-date-style">${course.startdate}</p>
+          <p class="end-date-style">${course.enddate}</p>
         </div>
-        <div class="card-action">
-          <a href="#students">Open</a>
-          <a href="#">Receivables</a>
+        <div class="card-action course-action">
+          <div class="col s6 center-align">
+            <a href="#students">Open</a>
+          </div>
+          <div class="col s6 center-align">
+            <a href="#">End</a>
+          </div>
         </div>
       </div>
     </div>
