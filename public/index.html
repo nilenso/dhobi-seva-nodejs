@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Dhobi-Seva</title>
-    <link href="libs/materialize/css/materialize.min.css" rel="stylesheet" title="Default Style">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="libs/materialize/css/materialize.css" rel="stylesheet" title="Default Style">
     <link href="styles/style.css" rel="stylesheet">
     <script src="scripts/jquery.min.js"></script>
     <script src="libs/materialize/js/materialize.js"></script>
@@ -17,28 +16,30 @@
       <div class="col s6 m3">
         <div class="card blue-grey darken-1 small">
           <div class="card-content white-text">
-            <span class="card-title">Create Course</span>
+            <span class="card-title card-t-style">Create Course</span>
+            <hr>
             <a href="#modal1"><i class="material-icons waves-effect waves-light">add</i></a>
           </div>
           <div id="modal1" class="modal">
+            <h4 class="modal-heading">Course Details</h4>
             <div class="modal-content">
               <div class="row">
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s12">
-                      <input placeholder="COURSE NAME" id="course_name" type="text" class="validate" data-length="10">
+                      <input placeholder="COURSE NAME" id="course_name" type="text" data-length="10">
                       <label for="course_name">Course Name</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <input  placeholder="DD MM, YYYY" type="date" class="datepicker" id="start_date">
+                      <input  placeholder="DD MM, YYYY" id="start_date" type="date" class="datepicker">
                         <label for="start_date">Start Date</label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <input placeholder="DD MM, YYYY" id="end_date" class="datepicker" type="date">
+                      <input placeholder="DD MM, YYYY" id="end_date" type="date" class="datepicker">
                       <label for="end_date">End Date</label>
                     </div>
                   </div>
@@ -51,7 +52,7 @@
           </div>
         </div>
       </div>
-        <div class="row" id="courses">
+      <div class="row" id="courses">
       </div>
     </div>
   </body>
