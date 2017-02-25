@@ -4,6 +4,6 @@
       "password": "qwerty",
       "dbhost": "localhost",
       "dbport": 5432,
-      "dbname": "test"
+      "dbname": "test1"
    }
 }

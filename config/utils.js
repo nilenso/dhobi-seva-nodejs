@@ -32,8 +32,8 @@ utils.createCourse = (req, res) => {
     } else {
       var currentDateArr = Date().split(' ')
       var year = currentDateArr[3] + '/' + (new Date().getMonth() + 1) + '/' + currentDateArr[2]
-      if (req.body.name.trim().length > 0 && Date.parse(req.body.end) > Date.parse(req.body.start) && Date.parse(req.body.start) >= Date.parse(year)) {
-      let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+req.body.name+"', '"+req.body.start+"', '"+req.body.end+"')", function (err) {
+      if (req.body.coursename.trim().length > 0 && Date.parse(req.body.enddate) > Date.parse(req.body.startdate) && Date.parse(req.body.startdate) >= Date.parse(year)) {
+      let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+req.body.coursename+"', '"+req.body.startdate+"', '"+req.body.enddate+"')", function (err) {
         if (err) console.log(err)
         else {
           res.send(req.body)
