@@ -1,5 +1,6 @@
 (function(window, $){
   window.dsn = window.dsn || {};
+  const uri = 'http://localhost:3000/api/v1';
   $(window.document).ready(function () {
     getCourse()
     $('.modal').modal()
@@ -18,7 +19,7 @@
     } else {
     let [courseName, startDate, endDate] = courseDetails
     $.ajax({
-      url: 'http://localhost:3000/createCourse',
+      url: `${uri}/courses`,
       method: 'POST',
       contentType: 'application/json',
       data: JSON.stringify({
@@ -42,7 +43,7 @@
 
   function getCourse() {
     $.ajax({
-      url: 'http://localhost:3000/getCourse',
+      url: `${uri}/courses`,
       dataType: 'json',
       success: function (res) {
         res.forEach(function (course) {

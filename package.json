@@ -2,9 +2,11 @@
   "name": "dhobi-seva-nodejs",
   "version": "1.0.0",
   "description": "Laundry app for Vipassana centres (on Node)",
-  "main": "config/server.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "prestart": "npm install"
   },
   "repository": {
     "type": "git",
