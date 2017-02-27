@@ -1,14 +1,10 @@
-const db = require('../db');
+const course = require('../controllers/courseController')
 
 const courseRoutes = router => {
   router
     .route('/courses')
-    .get((req, res) => {
-      db.getCourse(res);
-    })
-    .post((req, res) => {
-      db.createCourse(req, res);
-    });
-};
+    .get(course.getCourse)
+    .post(course.createCourse)
+}
 
-module.exports = courseRoutes;
+module.exports = courseRoutes

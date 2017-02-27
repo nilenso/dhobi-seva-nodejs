@@ -1,6 +1,7 @@
 const pg = require('pg')
 let confFile = './db_settings.json'
 const setting = require(confFile)
+const validate = require('./validate')
 
 const dbconfig = setting.dbconfig
 let conString = 'pg://' + dbconfig.username + ':' + dbconfig.password + '@' + dbconfig.dbhost + ':' + dbconfig.dbport + '/' + dbconfig.dbname
@@ -24,24 +25,22 @@ client.connect(function (err) {
 
 const utils = {}
 
-utils.createCourse = (req, res) => {
+utils.createCourse = (course) => {
   client = new pg.Client(conString)
   client.connect(function (err) {
     if (err) {
       console.log(err)
     } else {
-      var currentDateArr = Date().split(' ')
-      var year = currentDateArr[3] + '/' + (new Date().getMonth() + 1) + '/' + currentDateArr[2]
-      if (req.body.coursename.trim().length > 0 && Date.parse(req.body.enddate) > Date.parse(req.body.startdate) && Date.parse(req.body.startdate) >= Date.parse(year)) {
-      let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+req.body.coursename+"', '"+req.body.startdate+"', '"+req.body.enddate+"')", function (err) {
+      if (validate.courseDetails(course)) {
+      let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+course.coursename+"', '"+course.startdate+"', '"+course.enddate+"')", function (err) {
         if (err) console.log(err)
         else {
-          res.send(req.body)
           client.end(function (err) {
             if (err) {
               console.log(err)
             }
           })
+          return course
         }
       })
       } else {
