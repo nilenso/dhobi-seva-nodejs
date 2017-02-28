@@ -1,9 +1,9 @@
 {
   "dbconfig" : {
-      "username": "postgres",
-      "password": "qwerty",
+      "username": "user",
+      "password": "*******",
       "dbhost": "localhost",
       "dbport": 5432,
-      "dbname": "test"
+      "dbname": "dhobi_seva"
    }
 }
