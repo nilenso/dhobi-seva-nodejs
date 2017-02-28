@@ -25,11 +25,12 @@ client.connect(function (err) {
 
 const utils = {}
 
-utils.createCourse = (course) => {
+utils.createCourse = (course, cb) => {
   client = new pg.Client(conString)
   client.connect(function (err) {
     if (err) {
       console.log(err)
+      cb(null)
     } else {
       if (validate.courseDetails(course)) {
       let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+course.coursename+"', '"+course.startdate+"', '"+course.enddate+"')", function (err) {
@@ -40,22 +41,23 @@ utils.createCourse = (course) => {
               console.log(err)
             }
           })
-          return course
+          cb(course)
         }
       })
       } else {
         console.log('Error')
-        res.status(500).send('ERROR')
+        cb(null)
       }
     }
   })
 }
 
-utils.getCourse = (res) => {
+utils.getCourse = (cb) => {
   client = new pg.Client(conString)
   client.connect(function (err) {
     if (err) {
       console.log(err)
+      cb(null)
     } else {
       let query = client.query('SELECT * FROM courses', function (err) {
         if (err) console.log(err)
@@ -64,7 +66,7 @@ utils.getCourse = (res) => {
             result.addRow(row)
           })
           query.on('end', function (result) {
-            res.send(result.rows)
+            cb(result.rows)
           })
           client.end(function (err) {
             if (err) console.log(err)
@@ -74,5 +76,4 @@ utils.getCourse = (res) => {
     }
   })
 }
-
 module.exports = utils
