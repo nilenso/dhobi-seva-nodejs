@@ -1,20 +1,20 @@
 const db = require('../db')
 const models = require('../models/course')
-const Course = models.course
+const CourseDetails = models.Course
 
 const course = {}
 
 course.createCourse = (req, res) => {
-  let course = new Course(req)
-  db.createCourse(course, function cb (course) {
-    if (course) res.send(course)
+  let courseDetailsObj = new CourseDetails(req)
+  db.createCourse(courseDetailsObj, function (validCourse) {
+    if (validCourse) res.send(validCourse)
     else res.status(500).send('ERROR')
   })
 }
 
 course.getCourse = (req, res) => {
-  db.getCourse(function cb (courses) {
-    if (courses.length > 0) res.send(courses)
+  db.getCourse(function (listOfCourses) {
+    if (listOfCourses.length > 0) res.send(listOfCourses)
     else res.status(500).send('ERROR')
   })
 }

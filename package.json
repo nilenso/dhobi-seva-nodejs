@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iamgarima/dhobi-seva-nodejs.git"
+    "url": "git+https://github.com/nilenso/dhobi-seva-nodejs.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iamgarima/dhobi-seva-nodejs/issues"
+    "url": "https://github.com/nilenso/dhobi-seva-nodejs/issues"
   },
-  "homepage": "https://github.com/iamgarima/dhobi-seva-nodejs#readme",
+  "homepage": "https://github.com/nilenso/dhobi-seva-nodejs#readme",
   "dependencies": {
     "body-parser": "^1.16.1",
     "express": "^4.14.1",
