@@ -4,12 +4,20 @@ const setting = require(confFile)
 const validate = require('./validate')
 
 const dbconfig = setting.dbconfig
-let conString = 'pg://' + dbconfig.username + ':' + dbconfig.password + '@' + dbconfig.dbhost + ':' + dbconfig.dbport + '/' + dbconfig.dbname
 
-let client
+let conString = {
+  user: dbconfig.username,
+  database: dbconfig.dbname,
+  password: dbconfig.password,
+  host: dbconfig.dbhost,
+  port: dbconfig.dbport,
+  max: 10,
+  idleTimeoutMillis: 30000
+}
 
-client = new pg.Client(conString)
-client.connect(function (err) {
+let pool = new pg.Pool(conString)
+
+pool.connect(function (err, client, done) {
   if (err) {
     if (err.code === '3D000') {
       console.log('Database does not exist, creating custom db')
@@ -21,59 +29,49 @@ client.connect(function (err) {
       console.log(err)
     }
   }
+  done()
 })
 
 const utils = {}
 
 utils.createCourse = (course, cb) => {
-  client = new pg.Client(conString)
-  client.connect(function (err) {
+  pool.connect(function (err, client, done) {
     if (err) {
       console.log(err)
       cb(null)
-    } else {
-      if (validate.courseDetails(course)) {
-      let query = client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+course.coursename+"', '"+course.startdate+"', '"+course.enddate+"')", function (err) {
-        if (err) console.log(err)
-        else {
-          client.end(function (err) {
-            if (err) {
-              console.log(err)
-            }
-          })
+    }
+    if (validate.courseDetails(course)) {
+        client.query("INSERT INTO courses (coursename, startdate, enddate) VALUES ('"+course.coursename+"', '"+course.startdate+"', '"+course.enddate+"')", function (err) {
+          done()
+          if (err) console.log(err)
           cb(course)
-        }
-      })
-      } else {
-        console.log('Error')
-        cb(null)
-      }
+        })
+    } else {
+      console.log('Error')
+      cb(null)
     }
   })
 }
 
 utils.getCourse = (cb) => {
-  client = new pg.Client(conString)
-  client.connect(function (err) {
+  pool.connect(function (err, client, done) {
     if (err) {
       console.log(err)
       cb(null)
-    } else {
-      let query = client.query('SELECT * FROM courses', function (err) {
-        if (err) console.log(err)
-        else {
-          query.on('row', function (row, result) {
-            result.addRow(row)
-          })
-          query.on('end', function (result) {
-            cb(result.rows)
-          })
-          client.end(function (err) {
-            if (err) console.log(err)
-          })
-        }
-      })
     }
+    client.query('SELECT * FROM courses', function (err, result) {
+      done()
+      if (err) {
+        console.log(err)
+        cb(null)
+      }
+      cb(result.rows)
+    })
   })
 }
+
+pool.on('error', function (err, client) {
+  console.log(err)
+})
+
 module.exports = utils
