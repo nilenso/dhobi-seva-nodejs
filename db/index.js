@@ -32,9 +32,7 @@ pool.connect(function (err, client, done) {
   done()
 })
 
-const utils = {}
-
-utils.createCourse = (course, cb) => {
+exports.createCourse = (course, cb) => {
   pool.connect(function (err, client, done) {
     if (err) {
       console.log(err)
@@ -53,7 +51,7 @@ utils.createCourse = (course, cb) => {
   })
 }
 
-utils.getCourse = (cb) => {
+exports.getCourse = (cb) => {
   pool.connect(function (err, client, done) {
     if (err) {
       console.log(err)
@@ -73,5 +71,3 @@ utils.getCourse = (cb) => {
 pool.on('error', function (err, client) {
   console.log(err)
 })
-
-module.exports = utils

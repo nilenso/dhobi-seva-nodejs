@@ -1,6 +1,4 @@
-const validate = {}
-
-validate.courseDetails = (course) => {
+exports.courseDetails = (course) => {
   var start_m = Date.parse(course.startdate)
   var end_m = Date.parse(course.enddate)
   var name_m = course.coursename.trim()
@@ -10,5 +8,3 @@ validate.courseDetails = (course) => {
   if (name_m.length > 0 && end_m > start_m && start_m >= newCurrentDate_m) return course
   return null
 }
-
-module.exports = validate
