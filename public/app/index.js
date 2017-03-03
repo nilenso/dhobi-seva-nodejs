@@ -1,8 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Card from './components/Card';
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
 
+const App = () => {
+  return (
+    <div>
+      <Header />
+      <Footer />
+    </div>
+  )
+}
 
 ReactDOM
-.render(<div>Hello World</div>,
+.render(<App />,
   document.getElementById('app'))
