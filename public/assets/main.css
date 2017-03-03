@@ -1,3 +1,13 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
 h1 {
   text-align: center;
   margin-bottom: 50px
@@ -54,9 +64,4 @@ h1 {
 
 .card-t-style {
   padding-bottom: 10px
-}
-
-.fixed-footer {
-  position: fixed;
-  bottom: 0
 }

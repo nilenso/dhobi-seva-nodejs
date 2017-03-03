@@ -1,12 +1,10 @@
 const path = require('path');
 
 module.exports = {
-  entry: {
-    app: './public/app/index.js',
-  },
+  entry: ['whatwg-fetch', './public/app/index.js'],
   output: {
     path: path.resolve('./public/build'),
-    filename: '[name].js'
+    filename: 'app.js'
   },
   module: {
     rules: [
