@@ -8,7 +8,8 @@
     "start": "node server",
     "prestart": "npm install",
     "dev": "webpack-dev-server --inline --hot --content-base ./public",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack -w" 
   },
   "repository": {
     "type": "git",

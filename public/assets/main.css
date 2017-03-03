@@ -6,6 +6,23 @@ body {
 
 main {
   flex: 1 0 auto;
+  position: relative;
+  margin-top: 20px
+}
+
+footer {
+  position: relative;
+  bottom: -29.7vh;
+}
+
+.style-footer {
+  padding-top: 0px!important;
+  position: relative
+}
+
+.position-add {
+  position: absolute!important;
+  bottom: 50px!important;
 }
 
 h1 {

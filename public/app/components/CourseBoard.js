@@ -5,7 +5,7 @@ import CourseCard from './CourseCard'
 const renderCourseCards = (courses) => {
   return courses.map((course, index) => {
     return (
-      <CourseCard key={index} coursename={course.coursename} startdate={course.startdate} enddate={course.enddate}/>
+      <CourseCard key={index} coursename={course.course_name} startdate={course.start_date} enddate={course.end_date}/>
     );
   })
 }

@@ -7,11 +7,11 @@ const Header = () => {
       <div className="navbar-fixed">
         <nav>
           <div className="nav-wrapper">
-            <div className="brand-logo">Vipasna</div>
+            <div className="brand-logo center">Vipassana</div>
           </div>
         </nav>
       </div>
-    </header>  
+    </header>
   )
 }
 

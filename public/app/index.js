@@ -6,39 +6,6 @@ import Footer from './components/common/Footer'
 import CourseBoard from './components/CourseBoard'
 
 
-// const courses = [
-//   {
-//     coursename: 'Dhyan',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   },
-//   {
-//     coursename: 'Simran',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   },
-//   {
-//     coursename: 'Amritam',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   },
-//   {
-//     coursename: 'Upasna',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   },
-//   {
-//     coursename: 'Sabhya',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   },
-//   {
-//     coursename: 'Sadhna',
-//     startdate: 'March 25, 2017',
-//     enddate: 'May 15, 2017'
-//   }
-// ]
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -52,13 +19,13 @@ class App extends React.Component {
   }
 
   getCourses() {
-    fetch('http://localhost:3000/courses', {
+    fetch('http://localhost:3000/api/v1/courses', {
       method: 'GET'
     })
+    .then(res => res.json())
     .then(res => {
-      console.log(res);
       this.setState({
-        courses: res.data.courses
+        courses: res
       })
     })
     .catch(err => {
