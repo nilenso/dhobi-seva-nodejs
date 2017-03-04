@@ -57,17 +57,17 @@ exports.getCourse = (cb) => {
 }
 
 exports.addStudent = (student, cb) => {
-  if (validate.studentDetails(student)) {
+  //if (validate.studentDetails(student)) {
     db.init(function (ob) {
       ob.Students.create(student).then(function (m) {
         student.student_id = m.dataValues.id
       })
     })
     cb(student)
-  } else {
+  //} else {
     console.log('Invalid input format')
     cb(null)
-  }
+  //}
 }
 
 exports.getStudent = (course_id, cb) => {
@@ -76,8 +76,53 @@ exports.getStudent = (course_id, cb) => {
       var students = student.map(function (student) {
         return student.dataValues
       })
-      console.log(students)
       cb(students)
+    })
+  })
+}
+
+exports.addTransaction = (transaction, cb) => {
+  //if (validate.transactionDetails(transaction)) {
+    db.init(function (ob) {
+      ob.Transactions.create(transaction).then(function (m) {
+        transaction.transaction_id = m.dataValues.id
+      })
+    })
+    cb(transaction.transaction_id)
+  //} else {
+    console.log('Invalid input format')
+    cb(null)
+//  }
+}
+
+exports.getTransaction = (student_id, cb) => {
+  let transactionObj = {
+    student_id: student_id,
+    deposit: [],
+    laundry: [],
+    purchase: []
+  }
+  function seperateTransactions (transactionDetails, transaction_name) {
+    let transaction = transactionDetails.filter(function (transaction) {
+      return transaction.transaction_name === transaction_name
+    })
+    return transaction
+  }
+  db.init(function (ob) {
+    ob.Transactions.findAll({where: {student_id: student_id}}).then(function (transaction) {
+      let transactionDetails = transaction.map(function (transaction) {
+        return transaction.dataValues
+      })
+      let deposit = seperateTransactions(transactionDetails, 'deposit')
+      let laundry = seperateTransactions(transactionDetails, 'laundry')
+      let purchase = transactionDetails.filter(function (transaction) {
+        return (transaction.transaction_name !== 'deposit' && transaction.transaction_name !== 'laundry')
+      })
+      transactionObj.student_id = student_id
+      transactionObj.deposit.push(deposit)
+      transactionObj.purchase.push(purchase)
+      transactionObj.laundry.push(laundry)
+      cb(transactionObj)
     })
   })
 }

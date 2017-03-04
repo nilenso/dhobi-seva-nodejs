@@ -76,5 +76,33 @@ exports.init = (cb) => {
   // Table created
     return
   })
+
+  ob.Transactions = sequelize.define('transaction', {
+    student_id: {
+      type: Sequelize.INTEGER
+    },
+    transaction_name: {
+      type: Sequelize.STRING
+    },
+    transaction_date: {
+      type: Sequelize.STRING
+    },
+    amount: {
+      type: Sequelize.INTEGER
+    },
+    quantity: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    },
+    rate: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0
+    }
+  })
+
+  ob.Transactions.sync({force: false}).then(function () {
+  // Table created
+    return
+  })
   .then(cb(ob))
 }
