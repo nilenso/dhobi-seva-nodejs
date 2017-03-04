@@ -14,7 +14,7 @@ class CourseAddForm extends Component {
       start_date: this.startDate.value,
       end_date: this.endDate.value
     }
-    this.props.createCourse(course)    
+    this.props.createCourse(course)
   }
 
   render(){
@@ -24,7 +24,7 @@ class CourseAddForm extends Component {
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="COURSE NAME" ref={(input) => this.courseName = input} type="text" data-length="20" />
-              <label htmlFor="course_name">Coure Name</label>
+              <label htmlFor="course_name">Course Name</label>
             </div>
           </div>
           <div className="row">

@@ -27,7 +27,7 @@ class CourseBoard extends Component {
 	renderCourseCards() {
 	  return this.props.courses.map((course, index) => {
 	    return (
-	      <CourseCard key={index} coursename={course.course_name} startdate={course.start_date} enddate={course.end_date}/>
+	      <CourseCard key={index} courseid={course.id} coursename={course.course_name} startdate={course.start_date} enddate={course.end_date}/>
 	    );
 	  })
 	}

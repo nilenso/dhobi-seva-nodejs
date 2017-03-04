@@ -13,8 +13,8 @@ student.addStudent = (req, res) => {
 }
 
 student.getStudent = (req, res) => {
-  db.getStudent(req.body.course_id, function (listOfStudents) {
-    if (listOfStudents.length > 0) res.send(listOfStudents)
+  db.getStudent(req.params.courseId, function (listOfStudents) {
+    if (listOfStudents.length >= 0) res.send(listOfStudents)
     else res.status(500).send('ERROR')
   })
 }

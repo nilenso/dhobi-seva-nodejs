@@ -23,7 +23,7 @@ export const getCourses = () => {
 		})
 	}
 }
- 
+
 export const createCourse = (course) => {
 	return dispatch => {
 		axios
