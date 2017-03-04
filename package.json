@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
     "prestart": "npm install",
-    "dev": "webpack-dev-server --inline --hot --content-base ./public",
+    "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base ./public",
     "build": "webpack",
     "watch": "webpack -w"
   },
@@ -32,6 +32,7 @@
     "pg-hstore": "^2.3.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
     "sequelize": "^3.30.2",

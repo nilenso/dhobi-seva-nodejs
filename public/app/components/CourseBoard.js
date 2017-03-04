@@ -10,15 +10,9 @@ const renderCourseCards = (courses) => {
   })
 }
 
-const CourseBoard = (props) => {
+const CourseBoard = () => {
   return (
-    <main>
-      <div className="row">
-        {
-          renderCourseCards(props.courses)
-        }
-      </div>
-    </main>
+    <h1>This is CourseBoard</h1>
   )
 }
 
