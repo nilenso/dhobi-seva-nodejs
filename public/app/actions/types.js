@@ -1,1 +1,2 @@
 export const COURSES_AVAILABLE = 'COURSES_AVAILABLE';
+export const COURSE_ADDED = 'COURSE_ADDED';
