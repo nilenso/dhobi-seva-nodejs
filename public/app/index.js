@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 import { Provider } from 'react-redux'
 import Routes from './routes'
-import test from './reducers'
+import reducer from './reducers'
 
 const Index = () => {
-  const store = createStore(test)
+  const store = createStore(reducer, applyMiddleware(ReduxThunk));
   return (
     <Provider store={store}>
       <Routes />

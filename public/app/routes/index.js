@@ -15,7 +15,7 @@ const Routes = () => {
       <Route path="/" component={App}>
         <IndexRedirect to="/courses" />
         <Route path="courses" component={CourseBoard} />
-        <Route path="students/:course_id" component={StudentBoard} />
+        <Route path="students/:courseId" component={StudentBoard} />
       </Route>
     </Router>
   )
