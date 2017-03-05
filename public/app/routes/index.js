@@ -15,9 +15,9 @@ const Routes = () => {
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRedirect to="/courses" />
-        <Route path="courses" component={CourseBoard} />
-        <Route path="/addcourse" component={CourseAddForm} />
-        <Route path="students/:courseId" component={StudentBoard} />
+        <Route path="courses" title="Courses" component={CourseBoard} />
+        <Route path="/addcourse" title="Add Course" component={CourseAddForm} />
+        <Route path="students/:courseId" title="Students" component={StudentBoard} />
       </Route>
     </Router>
   )

@@ -1,16 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import 'whatwg-fetch'
+import React, { cloneElement } from 'react'
 import Header from './common/Header'
-import Footer from './common/Footer'
 import CourseBoard from './CourseBoard'
+import CardAdd from './common/CardAdd'
 
 const App = (props) => {
   return (
     <div>
-      <Header />
-      {props.children}
-      <Footer />
+      <Header title={props.children.props.route.title}/>
+      <props.children.type><CardAdd /></props.children.type>
     </div>
   )
 }
