@@ -86,12 +86,13 @@ exports.addTransaction = (transaction, cb) => {
     db.init(function (ob) {
       ob.Transactions.create(transaction).then(function (m) {
         transaction.transaction_id = m.dataValues.id
+        transaction.createdAt = m.dataValues.createdAt
+        cb(m.dataValues)
       })
     })
-    cb(transaction.transaction_id)
   //} else {
     console.log('Invalid input format')
-    cb(null)
+    //cb(null)
 //  }
 }
 

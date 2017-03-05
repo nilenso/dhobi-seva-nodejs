@@ -2,7 +2,7 @@ const transaction = require('../controllers/transactionController')
 
 const transactionRoutes = router => {
   router
-    .route('/transactions')
+    .route('/transactions/:student_id')
     .get(transaction.getTransaction)
     .post(transaction.addTransaction)
 }
