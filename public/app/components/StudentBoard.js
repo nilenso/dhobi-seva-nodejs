@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, cloneElement } from 'react'
+import { connect } from 'react-redux'
+import StudentCard from './StudentCard';
 
 class StudentBoard extends Component {
 
@@ -6,6 +8,7 @@ class StudentBoard extends Component {
     return (
       <main>
         <div className="row">
+          {cloneElement(this.props.children, { title: 'Add Student', link: '/addstudent'})}
           {this.props.students ? this.renderStudentCards() : []}
         </div>
       </main>
@@ -21,4 +24,10 @@ class StudentBoard extends Component {
   }
 }
 
-export default StudentBoard
+const mapStateToProps = (state) => {
+  return {
+    students: state.students.students
+  }
+}
+
+export default connect(mapStateToProps, null)(StudentBoard)

@@ -18,7 +18,7 @@ class CourseBoard extends Component {
 		return (
 			<main>
 				<div className="row">
-					{React.cloneElement(this.props.children, { title: 'Create Course', link: '/addcourse' })}
+					{React.cloneElement(this.props.children, { title: 'Create Course', link: 'addcourse' })}
 					{this.props.courses ? this.renderCourseCards(): []}
 				</div>
 			</main>

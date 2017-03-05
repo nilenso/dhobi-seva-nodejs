@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { STUDENTS_AVAILABLE } from './types'
+import { STUDENTS_AVAILABLE, STUDENT_ADDED } from './types'
 
 export const getStudents = (id) => {
 	return dispatch => {
@@ -10,7 +10,8 @@ export const getStudents = (id) => {
 			dispatch({
 				type: STUDENTS_AVAILABLE,
 				payload: {
-					students: res.data
+					students: res.data,
+					course_id: id
 				}
 			})
 			browserHistory.push(`/students/${id}`);
@@ -19,4 +20,28 @@ export const getStudents = (id) => {
 			console.log(err)
 		})
 	};
+}
+
+export const addstudent = (student, course_id) => {
+	return dispatch => {
+		axios
+		.post(`api/v1/students/${course_id}`, {...student, course_id})
+		.then((res) => {
+			const data = res.data;
+			dispatch({
+				type: STUDENT_ADDED,
+				payload: {
+					student: {
+						student_name: data.student_name,
+						seat_number: data.seat_number,
+						room_number: data.room_number
+					}
+				}
+			})
+			browserHistory.push(`/students/${course_id}`)
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}
 }

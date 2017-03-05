@@ -17,7 +17,7 @@ class CourseAddForm extends Component {
     this.props.createCourse(course)
   }
 
-  render(){
+  render() {
     return (
       <div className="row">
         <div className="col s12">
