@@ -7,7 +7,7 @@ const App = (props) => {
   return (
     <div>
       <Header title={props.children.props.route.title}/>
-      <props.children.type><CardAdd /></props.children.type>
+      <props.children.type {...props.params} ><CardAdd /></props.children.type>
     </div>
   )
 }

@@ -8,7 +8,7 @@ class StudentBoard extends Component {
     return (
       <main>
         <div className="row">
-          {cloneElement(this.props.children, { title: 'Add Student', link: '/addstudent'})}
+          {cloneElement(this.props.children, { title: 'Add Student', link: `/addstudent/${this.props.course_id}`})}
           {this.props.students ? this.renderStudentCards() : []}
         </div>
       </main>
@@ -18,7 +18,7 @@ class StudentBoard extends Component {
   renderStudentCards() {
     return this.props.students.map((student, index) => {
       return (
-        <StudentCard key={index} studentid={student.student_id} studentname={student.student_name} roomnumber={student.room_number} seatnumber={student.seat_number}/>
+        <StudentCard key={index} studentid={student.id} studentname={student.student_name} roomnumber={student.room_number} seatnumber={student.seat_number}/>
       );
     })
   }
@@ -26,6 +26,7 @@ class StudentBoard extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    course_id: state.students.course_id,
     students: state.students.students
   }
 }

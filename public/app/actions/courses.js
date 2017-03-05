@@ -9,7 +9,7 @@ import url from '../constants';
 export const getCourses = () => {
 	return dispatch => {
 		axios
-		.get(`api/v1/courses`)
+		.get(`/api/v1/courses`)
 		.then(res => {
 			dispatch({
 				type: COURSES_AVAILABLE,
@@ -27,7 +27,7 @@ export const getCourses = () => {
 export const createCourse = (course) => {
 	return dispatch => {
 		axios
-		 .post(`api/v1/courses`, course)
+		 .post(`/api/v1/courses`, course)
 		 .then(res => {
 		 	dispatch({
 		 		type: COURSE_ADDED,

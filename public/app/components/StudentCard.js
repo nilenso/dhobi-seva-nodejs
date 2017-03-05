@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 
@@ -14,13 +15,13 @@ const StudentCard = (props) => {
         </div>
         <div className="card-action course-action">
           <div className="col s4 center-align">
-             <a href="#">Deposit</a>
+             <Link to={`/deposits/${props.studentid}`}>Deposit</Link>
           </div>
           <div className="col s4 center-align">
-            <a href="#">Laundry</a>
+            <Link to={`/laundry/${props.studentid}`}>Laundry</Link>
           </div>
           <div className="col s4 center-align">
-            <a href="#">Purchase</a>
+            <Link to={`/purchases/${props.studentid}`}>Purchase</Link>
           </div>
         </div>
       </div>

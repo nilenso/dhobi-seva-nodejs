@@ -10,7 +10,6 @@ const courses = (state = INITIAL_STATE, action) => {
     case COURSES_AVAILABLE:
      return [...action.payload.courses]
     case COURSE_ADDED:
-    console.log(action.payload.course)
      return [...state, action.payload.course]
     default:
       return state;
