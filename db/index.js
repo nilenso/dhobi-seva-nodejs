@@ -36,9 +36,9 @@ exports.createCourse = (course, cb) => {
     db.init(function (ob) {
       ob.Courses.create(course).then(function (m) {
         course.course_id = m.dataValues.id
+        cb(course)
       })
     })
-    cb(course)
   } else {
     console.log('Invalid input format')
     cb(null)
@@ -61,12 +61,12 @@ exports.addStudent = (student, cb) => {
     db.init(function (ob) {
       ob.Students.create(student).then(function (m) {
         student.student_id = m.dataValues.id
+        cb(student)
       })
     })
-    cb(student)
   //} else {
     console.log('Invalid input format')
-    cb(null)
+  //  cb(null)
   //}
 }
 
@@ -86,12 +86,13 @@ exports.addTransaction = (transaction, cb) => {
     db.init(function (ob) {
       ob.Transactions.create(transaction).then(function (m) {
         transaction.transaction_id = m.dataValues.id
+        transaction.createdAt = m.dataValues.createdAt
+        cb(m.dataValues)
       })
     })
-    cb(transaction.transaction_id)
   //} else {
     console.log('Invalid input format')
-    cb(null)
+    //cb(null)
 //  }
 }
 

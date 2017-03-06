@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, cloneElement } from 'react'
 import { connect } from 'react-redux';
 import 'materialize-css/bin/materialize.css'
 import CourseCard from './CourseCard'
@@ -18,6 +18,7 @@ class CourseBoard extends Component {
 		return (
 			<main>
 				<div className="row">
+					{React.cloneElement(this.props.children, { title: 'Create Course', link: 'addcourse' })}
 					{this.props.courses ? this.renderCourseCards(): []}
 				</div>
 			</main>
@@ -27,7 +28,7 @@ class CourseBoard extends Component {
 	renderCourseCards() {
 	  return this.props.courses.map((course, index) => {
 	    return (
-	      <CourseCard key={index} coursename={course.course_name} startdate={course.start_date} enddate={course.end_date}/>
+	      <CourseCard key={index} courseid={course.id} coursename={course.course_name} startdate={course.start_date} enddate={course.end_date}/>
 	    );
 	  })
 	}
