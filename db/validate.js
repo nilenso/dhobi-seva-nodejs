@@ -2,8 +2,8 @@ function getCurrentDate () {
   var current_date_arr = Date().split(' ')
   var year = current_date_arr[3]
   var month = new Date().getMonth() + 1
-  return year + '/' + month + '/' + day
   var day = current_date_arr[2]
+  return year + '/' + month + '/' + day
 }
 
 function validNumber (field) {
@@ -39,13 +39,13 @@ exports.studentDetails = (student) => {
 }
 
 exports.depositDetails = (deposit) => {
-  var amount = deposit.amount.trim()
+  var amount = deposit.amount
   return validNumber(amount) ? deposit : null
 }
 
 exports.expenseDetails = (expense) => {
   var name = expense.transaction_name
-  var quantity = expense.quantity.trim()
-  var rate = expense.rate.trim()
+  var quantity = expense.quantity
+  var rate = expense.rate
   return (isEmpty(name) && validNumber(quantity) && validNumber(rate)) ? expense : null
 }

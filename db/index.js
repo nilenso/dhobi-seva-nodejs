@@ -57,17 +57,17 @@ exports.getCourse = (cb) => {
 }
 
 exports.addStudent = (student, cb) => {
-  //if (validate.studentDetails(student)) {
+  if (validate.studentDetails(student)) {
     db.init(function (ob) {
       ob.Students.create(student).then(function (m) {
         student.student_id = m.dataValues.id
         cb(student)
       })
     })
-  //} else {
+  } else {
     console.log('Invalid input format')
-  //  cb(null)
-  //}
+    cb(null)
+  }
 }
 
 exports.getStudent = (course_id, cb) => {
@@ -82,7 +82,7 @@ exports.getStudent = (course_id, cb) => {
 }
 
 exports.addTransaction = (transaction, cb) => {
-  //if (validate.transactionDetails(transaction)) {
+  if (validate.depositDetails(transaction) || validate.expenseDetails(transaction)) {
     db.init(function (ob) {
       ob.Transactions.create(transaction).then(function (m) {
         transaction.transaction_id = m.dataValues.id
@@ -90,12 +90,17 @@ exports.addTransaction = (transaction, cb) => {
         cb(m.dataValues)
       })
     })
-  //} else {
+  } else {
     console.log('Invalid input format')
-    //cb(null)
-//  }
+    cb(null)
+  }
 }
-
+function seperateTransactions (transactionDetails, transaction_name) {
+  let transaction = transactionDetails.filter(function (transaction) {
+    return transaction.transaction_name === transaction_name
+  })
+  return transaction
+}
 exports.getTransaction = (student_id, cb) => {
   let transactionObj = {
     student_id: student_id,
@@ -124,6 +129,39 @@ exports.getTransaction = (student_id, cb) => {
       transactionObj.purchase.push(purchase)
       transactionObj.laundry.push(laundry)
       cb(transactionObj)
+    })
+  })
+}
+
+exports.endCourse = (course_id, cb) => {
+  var arr = []
+
+  db.init(function (ob) {
+    ob.Students.findAll({where: {course_id: course_id}}).then(function (students) {
+      students.forEach(function (student) {
+        ob.Transactions.findAll({where: {student_id: student.id}}).then(function (transaction) {
+          var transactions = transaction.map(function (transaction) {
+            return transaction.dataValues
+          })
+          let studentFinal = {}
+          studentFinal.student_id = student.id
+          studentFinal.student_name = student.student_name
+          studentFinal.room_number = student.room_number
+          studentFinal.deposit = seperateTransactions(transactions, 'deposit').reduce(function (acc, val) {
+            return acc + val.amount
+          }, 0)
+          studentFinal.laundry = seperateTransactions(transactions, 'laundry').reduce(function (acc, val) {
+            return acc + val.amount
+          }, 0)
+          studentFinal.purchase = transactions.filter(function (transaction) {
+            return (transaction.transaction_name !== 'deposit' && transaction.transaction_name !== 'laundry')
+          }).reduce(function (acc, val) {
+            return acc + val.amount
+          }, 0)
+          arr = arr.concat(studentFinal)
+          cb(arr)
+        })
+      })
     })
   })
 }
