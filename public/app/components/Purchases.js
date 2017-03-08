@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import dateFormat from 'dateformat'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addTransaction } from '../actions/transactions'
@@ -68,7 +69,7 @@ class Purchases extends Component {
                 this.props.purchase.map((item, index) => {
                   return (
                     <tr>
-                      <td>{item.createdAt}</td>
+                      <td>{dateFormat(item.createdAt, "mediumDate")}</td>
                       <td>{item.transaction_name}</td>
                       <td>{item.quantity}</td>
                       <td>{item.rate}</td>

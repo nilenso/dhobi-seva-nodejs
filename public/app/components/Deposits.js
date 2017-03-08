@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import dateFormat from 'dateformat'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addTransaction } from '../actions/transactions'
@@ -48,7 +49,7 @@ class Deposits extends Component {
                 this.props.deposits.map((deposit, index) => {
                   return (
                     <tr>
-                      <td>{deposit.createdAt}</td>
+                      <td>{dateFormat(deposit.createdAt, "mediumDate")}</td>
                       <td>{deposit.amount}</td>
                     </tr>
                   );

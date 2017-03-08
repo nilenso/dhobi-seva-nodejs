@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import dateFormat from 'dateformat'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addTransaction } from '../actions/transactions'
@@ -59,7 +60,7 @@ class Laundry extends Component {
                 this.props.laundry.map((item, index) => {
                   return (
                     <tr>
-                      <td>{item.createdAt}</td>
+                      <td>{dateFormat(item.createdAt, "mediumDate")}</td>
                       <td>{item.quantity}</td>
                       <td>{item.rate}</td>
                       <td>{item.amount}</td>
