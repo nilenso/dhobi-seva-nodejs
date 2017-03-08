@@ -7,7 +7,7 @@ const CardAdd = (props) => {
   return (
     <div className="col s6 m3">
         <div className="card blue-grey darken-1 small">
-          <div className="card-content white-text">
+          <div className="card-content white-text card-add">
             <span className="card-title card-t-style">{props.title}</span>
             <hr />
             <Link to={props.link}>

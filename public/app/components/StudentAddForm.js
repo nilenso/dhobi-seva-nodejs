@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import 'materialize-css/bin/materialize.css'
+import 'main.css'
 import 'materialize-css/bin/materialize.js'
 import { addstudent } from '../actions/students'
 
@@ -17,28 +18,25 @@ class StudentAddForm extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col s12">
+        <div className="col s12 m6 form-inputs">
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="STUDENT NAME" ref={(input) => this.studentName = input} type="text" data-length="20" />
-              <label htmlFor="student_name">Student Name</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="ROOM NUMBER" type="text" ref={(input) => this.roomNumber = input} />
-              <label htmlFor="room_number">Room Number</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="SEAT NUMBER" type="text" ref={(input) => this.seatNumber = input} />
-              <label htmlFor="seat_number">Seat Number</label>
             </div>
           </div>
         </div>
-        <div className="col s3">
-          <button onClick={() => this.handleClick()}>Submit</button>
+        <div className="col s3 form-button">
+          <button className="waves-effect waves-light btn" onClick={() => this.handleClick()}>Submit</button>
         </div>
       </div>
     )

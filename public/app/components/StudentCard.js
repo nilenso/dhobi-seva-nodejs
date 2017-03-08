@@ -7,13 +7,13 @@ const StudentCard = (props) => {
   return (
     <div className="col s6 m3">
       <div className="card blue-grey darken-1 small">
-        <div className="card-content white-text">
+        <div className="card-content white-text student-card">
           <span className="card-title card-title-style">{props.studentname}</span>
           <hr/>
-          <p className="">{props.roomnumber}</p>
-          <p className="">{props.seatnumber}</p>
+          <p className="student-room">Room Number : {props.roomnumber}</p>
+          <p className="student-seat">Seat Number : {props.seatnumber}</p>
         </div>
-        <div className="card-action course-action">
+        <div className="card-action course-action student-buttons">
           <div className="col s4 center-align">
              <Link to={`/deposits/${props.studentid}`}>Deposit</Link>
           </div>

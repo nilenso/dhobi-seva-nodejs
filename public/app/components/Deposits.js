@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import 'materialize-css/bin/materialize.css'
+import 'main.css'
 import { addTransaction } from '../actions/transactions'
 import { getTransactions } from '../actions/transactions';
 
@@ -23,18 +24,17 @@ class Deposits extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col s12">
+        <div className="col s6">
           <div className="row">
             <div className="input-field col s12">
-              <input placeholder="DEPOSIT" type="text" ref={(input) => this.deposit = input} />
-              <label htmlFor="deposit"></label>
+              <input className="deposit-input" placeholder="DEPOSIT" type="text" ref={(input) => this.deposit = input} />
             </div>
           </div>
         </div>
-        <div className="col s3">
+        <div className="col s3 deposit-button">
           <button className="waves-effect waves-light btn" onClick={() => this.handleClick()}>Submit</button>
         </div>
-        <div className="col s6">
+        <div className="col s6 deposit-table">
           <table className="striped">
             <thead>
               <tr>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import 'materialize-css/bin/materialize.css'
+import 'main.css'
 import { addTransaction } from '../actions/transactions'
 import { getTransactions } from '../actions/transactions';
 
@@ -25,26 +26,24 @@ class Laundry extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col s12">
+        <div className="col s4 laundry-quantity">
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="QUANTITY" type="text" ref={(input) => this.quantity = input} />
-              <label htmlFor="quantity"></label>
             </div>
           </div>
         </div>
-        <div className="col s12">
+        <div className="col s4 laundry-rate">
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="RATE" type="text" ref={(input) => this.rate = input} />
-              <label htmlFor="rate"></label>
             </div>
           </div>
         </div>
-        <div className="col s3">
+        <div className="col s2 laundry-button">
           <button className="waves-effect waves-light btn" onClick={() => this.handleClick()}>Submit</button>
         </div>
-        <div className="col s6">
+        <div className="col s6 laundry-table">
           <table className="striped">
             <thead>
               <tr>
