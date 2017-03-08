@@ -1,9 +1,8 @@
+var dateFormat = require('dateformat');
+
+
 function getCurrentDate () {
-  var current_date_arr = Date().split(' ')
-  var year = current_date_arr[3]
-  var month = new Date().getMonth() + 1
-  var day = current_date_arr[2]
-  return year + '/' + month + '/' + day
+  return dateFormat(new Date(), "mediumDate")
 }
 
 function validNumber (field) {
