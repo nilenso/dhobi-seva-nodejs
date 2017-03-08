@@ -1,8 +1,8 @@
 const db = require('../db')
 
 exports.endCourse = (req, res) => {
-  let course_id = req.params.course_id
-  db.endCourse(course_id,
+  let courseId = req.params.courseId
+  db.endCourse(courseId,
     function (listOfStudents) {
       if (listOfStudents.length > 0) res.send(listOfStudents)
       else res.status(500).send('ERROR')
