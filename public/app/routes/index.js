@@ -13,6 +13,7 @@ import StudentAddForm from '../components/StudentAddForm'
 import Deposits from '../components/Deposits'
 import Laundry from '../components/Laundry'
 import Purchases from '../components/Purchases'
+import CourseEnd from '../components/CourseEnd'
 
 const Routes = () => {
   return (
@@ -26,6 +27,7 @@ const Routes = () => {
         <Route path="deposits/:studentId" title="Deposits" component={Deposits} />
         <Route path="laundry/:studentId" title="Laundry" component={Laundry} />
         <Route path="purchases/:studentId" title="Purchases" component={Purchases} />
+        <Route path="endcourse/:courseId" title="End Course" component={CourseEnd} />
       </Route>
     </Router>
   )

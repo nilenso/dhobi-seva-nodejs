@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
-import { getStudents } from '../actions/students'
+import { getStudents, printStudents } from '../actions/students'
 
 
 class CourseCard extends Component {
@@ -10,22 +11,26 @@ class CourseCard extends Component {
     this.props.getStudents(this.props.courseid);
   }
 
+  handleEndClick() {
+    this.props.printStudents(this.props.courseid, this.props.coursename);
+  }
+
   render() {
     return (
       <div className="col s6 m3">
         <div className="card blue-grey darken-1 small">
-          <div className="card-content white-text">
+          <div className="card-content white-text course-card">
             <span className="card-title card-title-style">{this.props.coursename}</span>
             <hr/>
             <p className="start-date-style">{this.props.startdate}</p>
             <p className="end-date-style">{this.props.enddate}</p>
           </div>
-          <div className="card-action course-action">
+          <div className="card-action course-action course-buttons">
             <div className="col s6 center-align">
               <a onClick={() => this.handleClick()}>Open</a>
             </div>
             <div className="col s6 center-align">
-              <a href="#">End</a>
+              <a onClick={() => this.handleEndClick()}>End</a>
             </div>
           </div>
         </div>
@@ -38,6 +43,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getStudents: (id) => {
       dispatch(getStudents(id))
+    },
+    printStudents: (id, name) => {
+      dispatch(printStudents(id, name))
     }
   }
 }

@@ -3,7 +3,8 @@ import { browserHistory } from 'react-router'
 import {
 	STUDENTS_AVAILABLE,
 	STUDENT_ADDED,
-	DEPOSIT_ADDED
+	DEPOSIT_ADDED,
+	COURSE_END
 } from './types'
 
 export const getStudents = (id) => {
@@ -49,4 +50,24 @@ export const addstudent = (student, course_id) => {
 			console.log(err)
 		})
 	}
+}
+
+export const printStudents = (id, name) => {
+	return dispatch => {
+		axios
+		.get(`/api/v1/endcourse/${id}`)
+		.then(res => {
+			dispatch({
+				type: COURSE_END,
+				payload: {
+					course_name: name,
+					students: res.data
+				}
+			})
+			browserHistory.push(`/endcourse/${id}`);
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	};
 }

@@ -3,9 +3,6 @@ var Sequelize = require('sequelize')
 let confFile = './db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
-const dotenv = require('dotenv')
-
-dotenv.load()
 
 let conStringPost = 'pg://' + dbconfig.username + ':' + dbconfig.password + '@' + dbconfig.dbhost + ':' + dbconfig.dbport + '/postgres'
 
@@ -107,8 +104,8 @@ exports.init = (cb) => {
   // Table created
     return
   })
-//  ob.Students.hasMany(ob.Transactions, {foreignKey: 'student_id'})
-  //ob.Transactions.belongsTo(ob.Students, {foreignKey: 'student_id'})
+  // ob.Students.hasMany(ob.Transactions, {foreignKey: 'student_id'})
+  // ob.Transactions.belongsTo(ob.Students, {foreignKey: 'student_id'})
   .then(cb(ob))
   .catch(function (err) {
     cb(null)
