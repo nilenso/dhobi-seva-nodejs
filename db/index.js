@@ -137,9 +137,11 @@ exports.endCourse = (course_id, cb) => {
   var arr = []
 
   db.init(function (ob) {
+    let studentsProcessed = 0;
     ob.Students.findAll({where: {course_id: course_id}}).then(function (students) {
       students.forEach(function (student) {
         ob.Transactions.findAll({where: {student_id: student.id}}).then(function (transaction) {
+          ++studentsProcessed;
           var transactions = transaction.map(function (transaction) {
             return transaction.dataValues
           })
@@ -159,7 +161,9 @@ exports.endCourse = (course_id, cb) => {
             return acc + val.amount
           }, 0)
           arr = arr.concat(studentFinal)
-          cb(arr)
+          if(studentsProcessed === students.length) {
+            cb(arr)
+          }
         })
       })
     })
