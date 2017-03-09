@@ -190,3 +190,8 @@ h1 {
   margin-top: 2%!important;
   font-size: 1.3em!important
 }
+
+.course-name {
+  border-bottom: 1px solid rgb(224, 224, 224)!important;
+  font-size: 1.1rem!important;
+}
