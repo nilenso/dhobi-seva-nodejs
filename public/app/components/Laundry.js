@@ -5,6 +5,7 @@ import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addTransaction } from '../actions/transactions'
 import { getTransactions } from '../actions/transactions';
+import { expenseDetails } from '../../../db/validate'
 
 
 class Laundry extends Component {
@@ -17,7 +18,7 @@ class Laundry extends Component {
     }
     this.quantity.value = '';
     this.rate.value = '';
-    this.props.addTransaction(laundry)
+    expenseDetails(laundry) === null ? alert('Invalid Input') : this.props.addTransaction(laundry)
   }
 
   componentWillMount() {

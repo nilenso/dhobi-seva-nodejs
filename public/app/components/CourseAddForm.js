@@ -8,6 +8,7 @@ import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import 'materialize-css/bin/materialize.js'
 import { createCourse } from '../actions/courses'
+import { courseDetails } from '../../../db/validate'
 
 
 class CourseAddForm extends Component {
@@ -17,7 +18,7 @@ class CourseAddForm extends Component {
       start_date: this.startDate.refs.input.props.value,
       end_date: this.endDate.refs.input.props.value
     }
-    this.props.createCourse(course)
+    courseDetails(course) === null ? alert("Invalid Input") : this.props.createCourse(course)
   }
 
   formatDate(date) {
@@ -30,7 +31,7 @@ class CourseAddForm extends Component {
         <div className="col s12 m6 form-inputs">
           <div className="row">
             <div className="col s12">
-              <input placeholder="COURSE NAME" ref={(input) => this.courseName = input} type="text" data-length="20" />
+              <input className="course-name" placeholder="COURSE NAME" ref={(input) => this.courseName = input} type="text" data-length="20" />
             </div>
           </div>
           <div className="row">

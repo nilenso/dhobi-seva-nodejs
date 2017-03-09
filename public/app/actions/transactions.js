@@ -26,7 +26,7 @@ export const getTransactions = (studentId) => {
 			})
 		})
 		.catch(err => {
-			console.log(err)
+			alert('Request failed!!');
 		})
 	}
 }
@@ -64,7 +64,7 @@ export const addTransaction = (transaction) => {
       }
 		})
 		.catch(err => {
-			console.log(err)
+			alert('Request failed!!');
 		})
 	}
 }

@@ -19,7 +19,7 @@ export const getCourses = () => {
 			});
 		})
 		.catch(err => {
-			console.log(err);
+			alert('Request failed!!');
 		})
 	}
 }
@@ -38,7 +38,7 @@ export const createCourse = (course) => {
 		 	browserHistory.push('/courses');
 		 })
 		 .catch(err => {
-		 	console.log(err);
+		 	alert('Request failed!!');
 		 })
 	}
 }

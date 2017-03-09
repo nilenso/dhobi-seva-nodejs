@@ -22,7 +22,7 @@ export const getStudents = (id) => {
 			browserHistory.push(`/students/${id}`);
 		})
 		.catch(err => {
-			console.log(err)
+			alert('Request failed!!');
 		})
 	};
 }
@@ -47,7 +47,7 @@ export const addstudent = (student, course_id) => {
 			browserHistory.push(`/students/${course_id}`)
 		})
 		.catch(err => {
-			console.log(err)
+			alert('Request failed!!');
 		})
 	}
 }

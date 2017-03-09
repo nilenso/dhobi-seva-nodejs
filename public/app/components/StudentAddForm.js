@@ -4,6 +4,7 @@ import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import 'materialize-css/bin/materialize.js'
 import { addstudent } from '../actions/students'
+import { studentDetails } from '../../../db/validate'
 
 class StudentAddForm extends Component {
   handleClick() {
@@ -12,7 +13,7 @@ class StudentAddForm extends Component {
       room_number: this.roomNumber.value,
       seat_number: this.seatNumber.value
     }
-    this.props.addstudent(student, this.props.course_id)
+    studentDetails(student) === null ? alert("Invalid Input") : this.props.addstudent(student, this.props.course_id)
   }
 
   render() {

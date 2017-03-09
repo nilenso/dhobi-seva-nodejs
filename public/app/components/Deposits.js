@@ -4,7 +4,8 @@ import dateFormat from 'dateformat'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addTransaction } from '../actions/transactions'
-import { getTransactions } from '../actions/transactions';
+import { getTransactions } from '../actions/transactions'
+import { depositDetails } from '../../../db/validate'
 
 
 class Deposits extends Component {
@@ -15,7 +16,7 @@ class Deposits extends Component {
       amount: Number(this.deposit.value)
     }
     this.deposit.value = '';
-    this.props.addTransaction(deposit)
+    depositDetails(deposit) === null ? alert('Invalid Input') : this.props.addTransaction(deposit)
   }
 
   componentWillMount() {
