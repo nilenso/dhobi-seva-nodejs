@@ -157,13 +157,14 @@ h1 {
   color: white!important
 }
 
-.student-buttons a{
+.student-buttons a {
   color: white!important
 }
 
-.course-buttons a{
+.course-buttons a {
   margin-right: 0!important;
-  color: white!important
+  color: white!important;
+  cursor: pointer!important
 }
 
 .card-add {
