@@ -1,0 +1,9 @@
+{
+  "dbconfig" : {
+      "username": "user",
+      "password": "*******",
+      "dbhost": "localhost",
+      "dbport": 5432,
+      "dbname": "dhobi_seva"
+   }
+}

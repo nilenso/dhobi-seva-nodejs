@@ -1,0 +1,27 @@
+header {
+  display: none!important
+}
+
+.billCard {
+  width: 45%!important;
+  background-color: white!important;
+  box-shadow: none!important;
+  transition: none!important;
+  line-height: 0.9!important;
+  padding: 0 6px 0 0!important;
+  margin-top: 0px!important;
+  margin-bottom: 0px!important;
+  margin-left: 25px!important;
+}
+
+.billCard .card-panel {
+  box-shadow: none!important;
+  transition: none!important;
+  border: 2px solid black!important;
+  padding: 5px 0 0 15px!important;
+  margin-bottom: 0!important
+}
+
+.billCard .card-panel p {
+  color: black!important
+}

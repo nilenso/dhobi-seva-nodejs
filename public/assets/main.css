@@ -1,0 +1,208 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  position: relative;
+  margin-top: 20px
+}
+
+footer {
+  position: relative;
+  bottom: -29.7vh;
+}
+
+.style-footer {
+  padding-top: 0px!important;
+  position: relative
+}
+
+.position-add {
+  position: absolute!important;
+  bottom: 50px!important;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 50px
+}
+
+.card-content {
+  text-align: center
+}
+
+.card-content span {
+  text-align: center
+}
+
+.card .card-title {
+  font-weight: 350!important;
+  font-size: 30px
+}
+
+.card-content i {
+  font-size: 120px;
+  margin-top: 38px;
+  color: #26a69a
+}
+
+.modal h4 {
+  text-align: center;
+  margin-top: 30px
+}
+
+#createCourse {
+  margin-right: 30px;
+}
+
+.course-action {
+  background-color: #26a69a!important;
+  color: #ffd8a6!important
+}
+
+.card-title-style {
+  font-size: 30px;
+  font-weight: 400;
+  padding-bottom: 10px
+}
+
+.start-date-style {
+  margin-top: 45px!important;
+  font-size: 1.5em!important
+}
+
+.end-date-style {
+  margin-top: 16px!important;
+  font-size: 1.1em!important
+}
+
+.card-t-style {
+  padding-bottom: 10px
+}
+
+.form-inputs {
+  margin-top: 8%!important;
+  margin-left: 25%!important
+}
+
+.form-button {
+  margin-left: 45%!important
+}
+
+.deposit-input {
+  margin-top: 5%!important;
+  margin-left: 45%!important
+}
+
+.deposit-button {
+  margin-top: 4%!important;
+  margin-left: 20%!important
+}
+
+.deposit-table {
+  margin-top: 8%!important;
+  margin-left: 25%!important
+}
+
+.laundry-quantity {
+  margin-top: 5%!important;
+  margin-left: 10%!important
+}
+
+.laundry-rate {
+  margin-top: 5%!important;
+  margin-left: 0%!important
+}
+
+.laundry-button {
+  margin-top: 6.4%!important;
+  margin-left: 0%!important
+}
+
+.laundry-table {
+  margin-top: 8%!important;
+  margin-left: 23%!important
+}
+
+.purchase-name {
+  margin-top: 5%!important;
+  margin-left: 6%!important
+}
+
+.purchase-quantity {
+  margin-top: 5%!important;
+  margin-left: 0%!important
+}
+
+.purchase-rate {
+  margin-top: 5%!important;
+  margin-left: 0%!important
+}
+
+.purchase-button {
+  margin-top: 6.4%!important;
+  margin-left: 0%!important
+}
+
+.purchase-table {
+  margin-top: 8%!important;
+  margin-left: 23%!important
+}
+
+.student-buttons {
+  padding-left: 2%!important;
+  color: white!important
+}
+
+.student-buttons a {
+  color: white!important
+}
+
+.course-buttons a {
+  margin-right: 0!important;
+  color: white!important;
+  cursor: pointer!important
+}
+
+.card-add {
+  padding-left: 0!important;
+  padding-right: 0!important
+}
+
+.course-card {
+  padding-left: 0!important;
+  padding-right: 0!important
+}
+
+.student-card {
+  padding-left: 0!important;
+  padding-right: 0!important
+}
+
+.student-room {
+  margin-top: 16%!important;
+  font-size: 1.3em!important
+}
+
+.student-seat {
+  margin-top: 2%!important;
+  font-size: 1.3em!important
+}
+
+.course-name {
+  border-bottom: 1px solid rgb(224, 224, 224)!important;
+  font-size: 1.1rem!important;
+}
+
+.page-title {
+  padding-left: 1.3%!important
+}
+
+.nav-button {
+  font-size: 1.2rem!important;
+  padding-right: 25px!important;
+  padding-left: 25px!important
+}
