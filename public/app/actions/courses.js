@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
 	COURSES_AVAILABLE,
-	COURSE_ADDED
+	COURSE_ADDED,
+	ADMIN_STATUS
 } from './types';
 import { browserHistory } from 'react-router';
 import url from '../constants';
@@ -15,6 +16,12 @@ export const getCourses = () => {
 				type: COURSES_AVAILABLE,
 				payload: {
 					courses: res.data
+				}
+			});
+			dispatch({
+				type: ADMIN_STATUS,
+				payload: {
+					admin : res.session.admin
 				}
 			});
 		})
