@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
-import { USERS_AVAILABLE } from './types'
+import { USERS_AVAILABLE, USER_ADDED } from './types'
 
 
 export const getUsers = (mobile_number) => {
@@ -16,6 +16,25 @@ export const getUsers = (mobile_number) => {
        })
        browserHistory.push('/adduser');
      })
+    .catch(err => {
+      alert('Request failed!!')
+    })
+  }
+}
+
+export const addUser = (user) => {
+  return dispatch => {
+    axios
+    .post(`api/v1/adduser`, user)
+    .then(res => {
+      dispatch({
+        type: USER_ADDED,
+        payload: {
+          user: res.data
+        }
+      })
+      browserHistory.push('/adduser');
+    })
     .catch(err => {
       alert('Request failed!!')
     })
