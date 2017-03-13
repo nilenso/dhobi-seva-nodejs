@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
+import { connect } from 'react-redux'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
+import { getUsers } from '../../actions/admin'
+
 
 class Header extends Component {
+  handleClick() {
+     this.props.getUsers()
+  }
+
   renderAddUser() {
     if(this.props.isAdmin) {
       return (
@@ -37,4 +44,12 @@ class Header extends Component {
    }
 }
 
-export default Header
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getUsers: () => {
+      dispatch(getUsers())
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Header)
