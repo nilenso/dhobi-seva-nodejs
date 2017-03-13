@@ -45,9 +45,9 @@ exports.createCourse = (course, cb) => {
   }
 }
 
-exports.getCourse = (cb) => {
+exports.getCourse = (user, cb) => {
   db.init(function (ob) {
-    ob.Courses.findAll().then(function (course) {
+    ob.Courses.findAll({where: {user_id: user}}).then(function (course) {
       var courses = course.map(function (course) {
         return course.dataValues
       })
