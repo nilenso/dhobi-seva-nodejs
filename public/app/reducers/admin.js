@@ -11,7 +11,7 @@ export const users = (state = INITIAL_STATE, action) => {
     case USERS_AVAILABLE:
       return [...action.payload.users]
     case USER_ADDED:
-      return [...state.users, action.payload.user]
+      return [...state, action.payload.user]
     default:
       return state;
   }
