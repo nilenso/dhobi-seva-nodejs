@@ -50,8 +50,8 @@ class AddUser extends Component {
                 this.props.users.map((user, index) => {
                   return (
                     <tr>
-                      <td>{user.name}</td>
-                      <td>{user.mobile_number}</td>
+                      <td>{user.user_name}</td>
+                      <td>{user.user_id}</td>
                     </tr>
                   );
                 })
