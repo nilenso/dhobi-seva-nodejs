@@ -9,25 +9,21 @@ const session = require('express-session')
 const uuid = require('node-uuid')
 const Mustache = require('mustache')
 const fs = require('fs')
-const pgSession = require('connect-pg-simple')(session)
-const pg = require('pg')
 const db = require('./db/db_initialise')
 const admin = require('./config/admin')
-
+const redis = require('redis')
+const redisStore = require('connect-redis')(session)
 const app = express()
+const client = redis.createClient()
 
 app.use(session({
   genid: function (req) {
     return uuid.v4()
   },
   secret: '123',
-  store: new pgSession({
-    pg: pg,
-    conString: 'pg://postgres:qwerty@localhost:5432/dhobi_seva',
-    tableName: 'session'
-  }),
-  resave: false,
-  saveUninitialized: true
+  store: new redisStore({host: 'localhost', port: 6379, client: client, ttl: 260}),
+  saveUninitialized: false,
+  resave: false
 }))
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -51,6 +47,7 @@ function loadLoginSuccess () {
 }
 
 app.get('/', function (request, response) {
+  console.log(request.session)
   if (request.session.user) {
     let html = Mustache.to_html(loadLoginSuccess())
     response.send(html)
