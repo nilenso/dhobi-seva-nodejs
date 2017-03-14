@@ -51,7 +51,6 @@ function loadLoginSuccess () {
 }
 
 app.get('/', function (request, response) {
-  console.log(request.session)
   if (request.session.user) {
     let html = Mustache.to_html(loadLoginSuccess())
     response.send(html)
