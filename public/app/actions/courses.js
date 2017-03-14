@@ -15,13 +15,13 @@ export const getCourses = () => {
 			dispatch({
 				type: COURSES_AVAILABLE,
 				payload: {
-					courses: res.data
+					courses: res.data.listOfCourses
 				}
 			});
 			dispatch({
 				type: ADMIN_STATUS,
 				payload: {
-					admin : res.session.admin
+					admin : res.data.admin
 				}
 			});
 		})

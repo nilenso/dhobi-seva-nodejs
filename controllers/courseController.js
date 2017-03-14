@@ -12,8 +12,13 @@ exports.createCourse = (req, res) => {
 }
 
 exports.getCourse = (req, res) => {
-  db.getCourse(req.session.user, function (listOfCourses) {
-    if (listOfCourses.length > 0) res.send(listOfCourses)
-    else res.status(500).send('ERROR')
+  var responseData = {}
+  responseData.admin = req.session.admin
+  responseData.listOfCourses = []
+  db.getCourse(req.session.user, function (courses) {
+    if (courses.length >= 0) {
+      responseData.listOfCourses = courses
+      res.send(responseData)
+    } else res.status(500).send('ERROR')
   })
 }
