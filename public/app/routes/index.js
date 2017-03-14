@@ -14,6 +14,7 @@ import Deposits from '../components/Deposits'
 import Laundry from '../components/Laundry'
 import Purchases from '../components/Purchases'
 import CourseEnd from '../components/CourseEnd'
+import AddUser from '../components/AddUser'
 
 const Routes = () => {
   return (
@@ -28,6 +29,7 @@ const Routes = () => {
         <Route path="laundry/:studentId" title="Laundry" component={Laundry} />
         <Route path="purchases/:studentId" title="Purchases" component={Purchases} />
         <Route path="endcourse/:courseId" title="End Course" component={CourseEnd} />
+        <Route path="adduser" title="Add User" component={AddUser} />
       </Route>
     </Router>
   )

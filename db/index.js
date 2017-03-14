@@ -161,11 +161,35 @@ exports.endCourse = (course_id, cb) => {
             return acc + val.amount
           }, 0)
           arr = arr.concat(studentFinal)
-          if(studentsProcessed === students.length) {
+          if (studentsProcessed === students.length) {
             cb(arr)
           }
         })
       })
+    })
+  })
+}
+
+exports.addUser = (user, cb) => {
+  if (validate.userDetails(user)) {
+    db.init(function (ob) {
+      ob.Users.create(user).then(function (m) {
+        cb(user)
+      })
+    })
+  } else {
+    console.log('Invalid input format')
+    cb(null)
+  }
+}
+
+exports.getUser = (cb) => {
+  db.init(function (ob) {
+    ob.Users.findAll().then(function (user) {
+      var users = user.map(function (user) {
+        return user.dataValues
+      })
+      cb(users)
     })
   })
 }
