@@ -3,17 +3,18 @@ import { connect } from 'react-redux'
 import 'materialize-css/bin/materialize.css'
 import 'main.css'
 import { addUser } from '../actions/admin'
+import { userDetails } from '../../../db/validate'
 
 
 class AddUser extends Component {
   handleClick() {
     const user = {
-      name: this.name.value,
-      mobile_number: Number(this.mobile_number.value)
+      user_name: this.name.value,
+      user_id: Number(this.mobile_number.value)
     }
     this.name.value = ''
     this.mobile_number.value = ''
-    this.props.addUser(user)
+    userDetails(user) === null ? alert('Invalid Input') : this.props.addUser(user)
   }
 
   render() {
