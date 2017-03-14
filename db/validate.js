@@ -48,3 +48,9 @@ exports.expenseDetails = (expense) => {
   var rate = expense.rate
   return (isEmpty(name) && validNumber(quantity) && validNumber(rate)) ? expense : null
 }
+
+exports.userDetails = (user) => {
+  var name = user.user_name
+  var mobile_number = user.user_id
+  return (isEmpty(name) && validNumber(mobile_number)) ? user : null
+}

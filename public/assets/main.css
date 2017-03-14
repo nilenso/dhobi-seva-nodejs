@@ -107,22 +107,22 @@ h1 {
   margin-left: 25%!important
 }
 
-.laundry-quantity {
+.laundry-quantity, .user-name {
   margin-top: 5%!important;
   margin-left: 10%!important
 }
 
-.laundry-rate {
+.laundry-rate, .user-mobile {
   margin-top: 5%!important;
   margin-left: 0%!important
 }
 
-.laundry-button {
+.laundry-button, .user-button {
   margin-top: 6.4%!important;
   margin-left: 0%!important
 }
 
-.laundry-table {
+.laundry-table, .user-table {
   margin-top: 8%!important;
   margin-left: 23%!important
 }
