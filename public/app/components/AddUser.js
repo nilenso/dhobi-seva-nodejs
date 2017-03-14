@@ -19,24 +19,24 @@ class AddUser extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col s4 laundry-quantity">
+        <div className="col s4 user-name">
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="NAME" type="text" ref={(input) => this.name = input} />
             </div>
           </div>
         </div>
-        <div className="col s4 laundry-rate">
+        <div className="col s4 user-mobile">
           <div className="row">
             <div className="input-field col s12">
               <input placeholder="MOBILE NUMBER" type="text" ref={(input) => this.mobile_number = input} />
             </div>
           </div>
         </div>
-        <div className="col s2 laundry-button">
+        <div className="col s2 user-button">
           <button className="waves-effect waves-light btn" onClick={() => this.handleClick()}>Submit</button>
         </div>
-        <div className="col s6 laundry-table">
+        <div className="col s6 user-table">
           <table className="striped">
             <thead>
               <tr>
