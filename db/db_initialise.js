@@ -1,6 +1,6 @@
 const pg = require('pg')
 var Sequelize = require('sequelize')
-let confFile = './db_settings.json'
+let confFile = '../config/db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
 
@@ -40,7 +40,24 @@ exports.init = (cb) => {
     console.log('Unable to connect to the database:', err)
   })
   var ob = {}
+
+  ob.Users = sequelize.define('user', {
+    user_name: {
+      type: Sequelize.STRING
+    },
+    user_id: {
+      type: Sequelize.STRING
+    }
+  })
+
+  ob.Users.sync({force: false}).then(function () {
+  // Table created
+    return
+  })
   ob.Courses = sequelize.define('course', {
+    user_id: {
+      type: Sequelize.STRING
+    },
     course_name: {
       type: Sequelize.STRING
     },

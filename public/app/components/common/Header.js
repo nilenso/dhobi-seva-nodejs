@@ -7,6 +7,7 @@ import { getUsers } from '../../actions/admin'
 
 
 class Header extends Component {
+
   handleClick() {
      this.props.getUsers()
   }
@@ -34,6 +35,9 @@ class Header extends Component {
                   { this.renderAddUser() }
                   <li>
                     <Link to={`/courses`} className="nav-button">Courses</Link>
+                  </li>
+                  <li>
+                    <a href="/logout" className="nav-button">Logout</a>
                   </li>
                 </ul>
               </div>

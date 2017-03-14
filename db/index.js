@@ -1,7 +1,7 @@
 const pg = require('pg')
 const validate = require('./validate')
 const db = require('./db_initialise')
-let confFile = './db_settings.json'
+let confFile = '../config/db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
 
@@ -45,9 +45,9 @@ exports.createCourse = (course, cb) => {
   }
 }
 
-exports.getCourse = (cb) => {
+exports.getCourse = (user, cb) => {
   db.init(function (ob) {
-    ob.Courses.findAll().then(function (course) {
+    ob.Courses.findAll({where: {user_id: user}}).then(function (course) {
       var courses = course.map(function (course) {
         return course.dataValues
       })

@@ -12,7 +12,7 @@ exports.addUser = (req, res) => {
 
 exports.getUser = (req, res) => {
   db.getUser(function (listOfUsers) {
-    if (listOfUsers.length > 0) res.send(listOfUsers)
+    if (listOfUsers.length >= 0) res.send(listOfUsers)
     else res.status(500).send('ERROR')
   })
 }

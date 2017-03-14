@@ -3,7 +3,8 @@ import {
   Router,
   Route,
   IndexRedirect,
-  browserHistory
+  browserHistory,
+  Redirect
 } from 'react-router'
 import App from '../components/App'
 import CourseBoard from '../components/CourseBoard'
@@ -30,6 +31,7 @@ const Routes = () => {
         <Route path="purchases/:studentId" title="Purchases" component={Purchases} />
         <Route path="endcourse/:courseId" title="End Course" component={CourseEnd} />
         <Route path="adduser" title="Add User" component={AddUser} />
+        <Redirect from="sendcode" to="courses" />
       </Route>
     </Router>
   )
