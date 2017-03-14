@@ -1,6 +1,6 @@
 const pg = require('pg')
 var Sequelize = require('sequelize')
-let confFile = './db_settings.json'
+let confFile = '../config/db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
 

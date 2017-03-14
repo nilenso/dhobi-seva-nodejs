@@ -12,6 +12,7 @@ const fs = require('fs')
 const pgSession = require('connect-pg-simple')(session)
 const pg = require('pg')
 const db = require('./db/db_initialise')
+const admin = require('./config/admin')
 
 const app = express()
 
@@ -84,11 +85,12 @@ app.post('/sendcode', function (request, response) {
 
       let me_endpoint_url = me_endpoint_base_url + '?access_token=' + respBody.access_token
       Request.get({url: me_endpoint_url, json: true}, function (err, resp, respBody) {
-        request.session.admin = respBody.phone.national_number === '2345'
+        request.session.admin = respBody.phone.national_number === admin.admin_id
         if(request.session.admin) {
+          request.session.user = respBody.id
           var html = Mustache.to_html(loadLoginSuccess(), view)
           response.send(html)
-        }
+        } else {
         db.init(function (ob) {
           ob.Users.findAll({where: {user_id: respBody.phone.national_number}}).then(function (user) {
             if (user.length > 0) {
@@ -103,6 +105,7 @@ app.post('/sendcode', function (request, response) {
             }
           })
         })
+      }
       })
     })
   } else {

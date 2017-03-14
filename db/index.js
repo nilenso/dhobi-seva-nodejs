@@ -1,7 +1,7 @@
 const pg = require('pg')
 const validate = require('./validate')
 const db = require('./db_initialise')
-let confFile = './db_settings.json'
+let confFile = '../config/db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
 
