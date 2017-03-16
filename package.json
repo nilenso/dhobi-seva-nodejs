@@ -4,7 +4,7 @@
   "description": "Laundry app for Vipassana centres (on Node)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server",
     "prestart": "npm install",
     "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base ./public",
@@ -56,6 +56,7 @@
     "babel-preset-stage-3": "^6.22.0",
     "css-loader": "^0.26.2",
     "file-loader": "^0.10.1",
+    "jest": "^19.0.2",
     "style-loader": "^0.13.2",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
