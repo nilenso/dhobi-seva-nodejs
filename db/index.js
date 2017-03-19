@@ -4,6 +4,7 @@ const db = require('./db_initialise')
 let confFile = '../config/db_settings.json'
 const setting = require(confFile)
 const dbconfig = setting.dbconfig
+const utils = require('../db_utils.js')
 
 let conString = {
   user: dbconfig.username,
@@ -95,72 +96,26 @@ exports.addTransaction = (transaction, cb) => {
     cb(null)
   }
 }
-function seperateTransactions (transactionDetails, transaction_name) {
-  let transaction = transactionDetails.filter(function (transaction) {
-    return transaction.transaction_name === transaction_name
-  })
-  return transaction
-}
+
 exports.getTransaction = (student_id, cb) => {
-  let transactionObj = {
-    student_id: student_id,
-    deposit: [],
-    laundry: [],
-    purchase: []
-  }
-  function seperateTransactions (transactionDetails, transaction_name) {
-    let transaction = transactionDetails.filter(function (transaction) {
-      return transaction.transaction_name === transaction_name
-    })
-    return transaction
-  }
   db.init(function (ob) {
     ob.Transactions.findAll({where: {student_id: student_id}}).then(function (transaction) {
-      let transactionDetails = transaction.map(function (transaction) {
-        return transaction.dataValues
-      })
-      let deposit = seperateTransactions(transactionDetails, 'deposit')
-      let laundry = seperateTransactions(transactionDetails, 'laundry')
-      let purchase = transactionDetails.filter(function (transaction) {
-        return (transaction.transaction_name !== 'deposit' && transaction.transaction_name !== 'laundry')
-      })
-      transactionObj.student_id = student_id
-      transactionObj.deposit.push(deposit)
-      transactionObj.purchase.push(purchase)
-      transactionObj.laundry.push(laundry)
-      cb(transactionObj)
+      let transactionDetails = utils.transactionData(transaction)
+      cb(utils.txnObj(student_id, transactionDetails))
     })
   })
 }
 
 exports.endCourse = (course_id, cb) => {
   var arr = []
-
   db.init(function (ob) {
     let studentsProcessed = 0;
     ob.Students.findAll({where: {course_id: course_id}}).then(function (students) {
       students.forEach(function (student) {
         ob.Transactions.findAll({where: {student_id: student.id}}).then(function (transaction) {
-          ++studentsProcessed;
-          var transactions = transaction.map(function (transaction) {
-            return transaction.dataValues
-          })
-          let studentFinal = {}
-          studentFinal.student_id = student.id
-          studentFinal.student_name = student.student_name
-          studentFinal.room_number = student.room_number
-          studentFinal.deposit = seperateTransactions(transactions, 'deposit').reduce(function (acc, val) {
-            return acc + val.amount
-          }, 0)
-          studentFinal.laundry = seperateTransactions(transactions, 'laundry').reduce(function (acc, val) {
-            return acc + val.amount
-          }, 0)
-          studentFinal.purchase = transactions.filter(function (transaction) {
-            return (transaction.transaction_name !== 'deposit' && transaction.transaction_name !== 'laundry')
-          }).reduce(function (acc, val) {
-            return acc + val.amount
-          }, 0)
-          arr = arr.concat(studentFinal)
+          ++studentsProcessed
+          let transactionDetails = utils.transactionData(transaction)
+          arr = arr.concat(utils.studentObj(student, transactionDetails))
           if (studentsProcessed === students.length) {
             cb(arr)
           }

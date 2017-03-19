@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest",
     "start": "node server",
-    "prestart": "npm install",
     "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base ./public",
     "build": "webpack",
     "watch": "webpack -w"
