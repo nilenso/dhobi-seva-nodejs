@@ -30,33 +30,21 @@ exports.transactionData = (transaction) => {
 }
 
 exports.txnObj = (student_id, transactionDetails) => {
-  let transactionObj = {
-    student_id: student_id,
-    deposit: [],
-    laundry: [],
-    purchase: []
-  }
-  let deposit = seperateTransactions(transactionDetails, 'deposit')
-  let laundry = seperateTransactions(transactionDetails, 'laundry')
-  let purchase = separatePurchase(transactionDetails)
-
+  let transactionObj = {}
   transactionObj.student_id = student_id
-  transactionObj.deposit.push(deposit)
-  transactionObj.purchase.push(purchase)
-  transactionObj.laundry.push(laundry)
-  
+  transactionObj.deposit = seperateTransactions(transactionDetails, 'deposit')
+  transactionObj.laundry = seperateTransactions(transactionDetails, 'laundry')
+  transactionObj.purchase = separatePurchase(transactionDetails)
   return transactionObj
 }
 
 exports.studentObj = (student, transactionDetails) => {
   let studentFinal = {}
-
   studentFinal.student_id = student.id
   studentFinal.student_name = student.student_name
   studentFinal.room_number = student.room_number
   studentFinal.deposit = transactionSum(transactionDetails, 'deposit')
   studentFinal.laundry = transactionSum(transactionDetails, 'laundry')
   studentFinal.purchase = purchaseSum(transactionDetails, 'purchase')
-
   return studentFinal
 }

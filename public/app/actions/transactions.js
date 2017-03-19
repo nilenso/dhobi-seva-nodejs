@@ -18,9 +18,9 @@ export const getTransactions = (studentId) => {
 				payload: {
 					transactions: {
             student_id: data.student_id,
-            deposit: data.deposit[0],
-            laundry: data.laundry[0],
-            purchase: data.purchase[0]
+            deposit: data.deposit,
+            laundry: data.laundry,
+            purchase: data.purchase
           }
 				}
 			})
