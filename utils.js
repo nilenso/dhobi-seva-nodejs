@@ -2,14 +2,16 @@ const Request = require('request')
 const Querystring = require('querystring')
 const Mustache = require('mustache')
 const fs = require('fs')
+const Guid = require('guid')
 const db = require('./db/db_initialise')
 const admin = require('./config/admin')
-const Guid = require('guid')
+const account_kit = require('./config/account_kit.json')
+
 
 let csrf_guid = Guid.raw()
-const api_version = 'v1.0'
-const app_id = '354578414912778'
-const app_secret = '95bf1f8379d7cd0bf5fb8a9c62416a37'
+const app_id = account_kit.app_id
+const app_secret = account_kit.app_secret
+const api_version = account_kit.version
 
 const me_endpoint_base_url = 'https://graph.accountkit.com/v1.1/me'
 const token_exchange_base_url = 'https://graph.accountkit.com/v1.1/access_token'
