@@ -6,6 +6,7 @@ Laundry app for Vipassana centres (on Node)
 - [Node.js](https://nodejs.org/en/)
 - [PostgreSQL](https://www.postgresql.org)
 - [redis](https://redis.io)
+- [Account Kit](https://developers.facebook.com/)
 #### Clone the repo  and install dependencies:
 ```bash
 git clone https://github.com/nilenso/dhobi-seva-nodejs.git
@@ -16,7 +17,9 @@ npm install
 ```bash
 cd config
 ```
-Update **admin_id** with the admin's mobile number in *admin.json* and set the **username** and **password** to your postgreSQL credentials in *db_settings.json*.
+- Update **admin_id** with the admin's mobile number in *admin.json*
+- Set the **username** and **password** to your postgreSQL credentials in *db_settings.json*
+- Update your Account Kit credentials in *account_kit.json*
 #### Run webpack
 ```bash
 npm run-script build
