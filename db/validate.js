@@ -32,9 +32,7 @@ exports.courseDetails = (course) => {
 
 exports.studentDetails = (student) => {
   var student_name = student.student_name
-  var room_number = student.room_number
-  var seat_number = student.seat_number
-  return (isEmpty(student_name) && isEmpty(room_number) && isEmpty(seat_number)) ? student : null
+  return isEmpty(student_name) ? student : null
 }
 
 exports.depositDetails = (deposit) => {
