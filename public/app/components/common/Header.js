@@ -30,8 +30,8 @@ class Header extends Component {
           <div className="navbar-fixed">
             <nav>
               <div className="nav-wrapper">
-                <div className="brand-logo page-title">{this.props.title}</div>
-                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                <div className="brand-logo page-title left">{this.props.title}</div>
+                <ul id="nav-mobile" className="right">
                   { this.renderAddUser() }
                   <li>
                     <Link to={`/courses`} className="nav-button">Courses</Link>

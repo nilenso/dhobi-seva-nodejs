@@ -17,8 +17,8 @@ class CourseCard extends Component {
 
   render() {
     return (
-      <div className="col s6 m3">
-        <div className="card blue-grey darken-1 small">
+      <div className="col s6 m4 l3">
+        <div className="card blue-grey darken-1 small hoverable">
           <div className="card-content white-text course-card">
             <span className="card-title card-title-style">{this.props.coursename}</span>
             <hr/>

@@ -5,8 +5,8 @@ import 'main.css'
 
 const StudentCard = (props) => {
   return (
-    <div className="col s6 m3">
-      <div className="card blue-grey darken-1 small">
+    <div className="col s6 m4 l3">
+      <div className="card blue-grey darken-1 small hoverable">
         <div className="card-content white-text student-card">
           <span className="card-title card-title-style">{props.studentname}</span>
           <hr/>

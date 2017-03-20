@@ -13,8 +13,8 @@ class CourseEnd extends Component {
         {
           this.props.final.students.map((student, index) => {
             return (
-                <div className="col s6 m3 billCard">
-                  <div className="card-panel teal">
+                <div className="col s6 m4 l3 billCard">
+                  <div className="card-panel teal hoverable">
                     <p className="white-text">Name : {student.student_name}</p>
                     <p className="white-text">Course Name : {this.props.final.course_name}</p>
                     <p className="white-text">Room Number : {student.room_number}</p>
