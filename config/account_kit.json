@@ -1,0 +1,5 @@
+{
+  "app_id": "FACEBOOK_APP_ID",
+  "app_secret": "ACCOUNT_KIT_APP_SECRET",
+  "version": "ACCOUNT_KIT_API_VERSION"
+}
